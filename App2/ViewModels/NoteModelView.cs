@@ -23,11 +23,15 @@ namespace NoteNote.ViewModels
 
         public NoteModelView()
         {
+            Notes = new ObservableCollection<NoteModel>();
+
             NoteModel testOne = new NoteModel("Title One", "Title One Body!");
-            NoteModel testTwo = new NoteModel("Title Twp", "Title Two Body!");
+            NoteModel testTwo = new NoteModel("Title Two", "Title Two Body!");
 
             NoteList.Add(testOne);
             NoteList.Add(testTwo);
+
+            PerformFiltering();
         }
 
         public NoteModel SelectedNote

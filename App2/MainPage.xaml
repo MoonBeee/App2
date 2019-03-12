@@ -17,18 +17,47 @@
 
     <!-- Resources for the application (templates, data binding) -->
     <Page.Resources>
-        
+        <CollectionViewSource x:Name="NoteCollection"
+                              Source="{x:Bind NoteView.Notes}"></CollectionViewSource>
+        <DataTemplate x:Name="NotesTemplate" x:DataType="model:NoteModel">
+            <StackPanel Orientation="Horizontal" Margin="6">
+                <TextBlock Text="{x:Bind NoteTitle}"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+
     </Page.Resources>
 
     <!-- This is the bar for the functionality at top of the application-->
     <Page.TopAppBar>
         <CommandBar>
-            
+
         </CommandBar>
-        
+
     </Page.TopAppBar>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="108*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="58*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox x:Name="FilterTextbox" 
+                 Text="{x:Bind NoteView.Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 PlaceholderText="Search Notes.."
+                 FontSize="12" Margin="10" Height="30" BorderBrush="LightGray"
+                 Grid.Row="0" Grid.Column="0"/>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="0">
+            <ListView VerticalAlignment="Top"
+                ItemsSource="{Binding Source={StaticResource NoteCollection}}"
+                ItemTemplate="{Binding Source={StaticResource NotesTemplate}}"
+                SelectedItem="{x:Bind NoteView.SelectedNote, Mode=TwoWay}"
+                ></ListView>
+        </ScrollViewer>
 
     </Grid>
 </Page>
