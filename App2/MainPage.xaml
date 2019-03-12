@@ -32,6 +32,8 @@
         <CommandBar>
 
         </CommandBar>
+        <AppBarButton Icon="Accept" Label="Save Changes"
+                          Command="{x:Bind NoteView.AcceptCommand}"></AppBarButton>
 
     </Page.TopAppBar>
 

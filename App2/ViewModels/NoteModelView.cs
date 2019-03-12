@@ -11,6 +11,7 @@ namespace NoteNote.ViewModels
 {
     public class NoteModelView : INotifyPropertyChanged
     {
+        public AcceptCommand AcceptCommand { get; }
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<NoteModel> Notes { get; set; }
