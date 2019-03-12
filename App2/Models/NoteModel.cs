@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App2.Models
+namespace NoteNote.Models
 {
     public class NoteModel
     {
